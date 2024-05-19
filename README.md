@@ -1,4 +1,4 @@
-#초기 화면 (안드로이드 기준)
+# 초기 화면 (안드로이드 기준)
 ![image](https://github.com/WhaleKimm/ObesityManagementApp/assets/134510321/0580cc3b-298f-408b-9093-7edf3c6851bc)
 
 # 다이어트 계획
