@@ -6,6 +6,8 @@ import 'package:obesity_management_app/models/diet_plan.dart'; // 다이어트 �
 import 'package:uuid/uuid.dart'; // UUID 생성 라이브러리 import
 
 class AddDietPlanScreen extends StatefulWidget {
+  const AddDietPlanScreen({super.key});
+
   @override
   _AddDietPlanScreenState createState() => _AddDietPlanScreenState();
 }
@@ -20,15 +22,15 @@ class _AddDietPlanScreenState extends State<AddDietPlanScreen> {
   String _specialNotes = ''; // 특이사항
   double? _targetWeight; // 목표 체중
   DateTime? _targetDate; // 목표 기한
-  List<String> _meals = []; // 식사 목록
-  List<String> _exercises = []; // 운동 목록
+  final List<String> _meals = []; // 식사 목록
+  final List<String> _exercises = []; // 운동 목록
 
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       // 폼 검증
       _formKey.currentState!.save(); // 폼 저장
       final newPlan = DietPlan(
-        id: Uuid().v4(), // UUID 생성
+        id: const Uuid().v4(), // UUID 생성
         name: _name, // 이름 설정
         description: _description, // 설명 설정
         height: _height, // 키 설정
@@ -64,17 +66,17 @@ class _AddDietPlanScreenState extends State<AddDietPlanScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Diet Plan'), // 앱바 제목 설정
+        title: const Text('Add Diet Plan'), // 앱바 제목 설정
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0), // 패딩 설정
+        padding: const EdgeInsets.all(16.0), // 패딩 설정
         child: Form(
           key: _formKey, // 폼 키 설정
           child: SingleChildScrollView(
             child: Column(
               children: [
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Name'), // 이름 입력 필드
+                  decoration: const InputDecoration(labelText: 'Name'), // 이름 입력 필드
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please enter a name'; // 검증 메시지
@@ -87,7 +89,7 @@ class _AddDietPlanScreenState extends State<AddDietPlanScreen> {
                 ),
                 TextFormField(
                   decoration:
-                      InputDecoration(labelText: 'Description'), // 설명 입력 필드
+                      const InputDecoration(labelText: 'Description'), // 설명 입력 필드
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please enter a description'; // 검증 메시지
@@ -100,7 +102,7 @@ class _AddDietPlanScreenState extends State<AddDietPlanScreen> {
                 ),
                 TextFormField(
                   decoration:
-                      InputDecoration(labelText: 'Height (cm)'), // 키 입력 필드
+                      const InputDecoration(labelText: 'Height (cm)'), // 키 입력 필드
                   keyboardType: TextInputType.number,
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -115,7 +117,7 @@ class _AddDietPlanScreenState extends State<AddDietPlanScreen> {
                 ),
                 TextFormField(
                   decoration:
-                      InputDecoration(labelText: 'Weight (kg)'), // 몸무게 입력 필드
+                      const InputDecoration(labelText: 'Weight (kg)'), // 몸무게 입력 필드
                   keyboardType: TextInputType.number,
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -129,7 +131,7 @@ class _AddDietPlanScreenState extends State<AddDietPlanScreen> {
                   },
                 ),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Age'), // 나이 입력 필드
+                  decoration: const InputDecoration(labelText: 'Age'), // 나이 입력 필드
                   keyboardType: TextInputType.number,
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -143,13 +145,13 @@ class _AddDietPlanScreenState extends State<AddDietPlanScreen> {
                 ),
                 TextFormField(
                   decoration:
-                      InputDecoration(labelText: 'Special Notes'), // 특이사항 입력 필드
+                      const InputDecoration(labelText: 'Special Notes'), // 특이사항 입력 필드
                   onSaved: (value) {
                     _specialNotes = value!; // 특이사항 저장
                   },
                 ),
                 TextFormField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: 'Target Weight (kg)'), // 목표 체중 입력 필드
                   keyboardType: TextInputType.number,
                   onSaved: (value) {
@@ -164,7 +166,7 @@ class _AddDietPlanScreenState extends State<AddDietPlanScreen> {
                         decoration: InputDecoration(
                           labelText: 'Target Date', // 목표 기한 입력 필드
                           suffixIcon: IconButton(
-                            icon: Icon(Icons.calendar_today),
+                            icon: const Icon(Icons.calendar_today),
                             onPressed: () => _selectDate(context),
                           ),
                         ),
@@ -180,7 +182,7 @@ class _AddDietPlanScreenState extends State<AddDietPlanScreen> {
                 ),
                 ElevatedButton(
                   onPressed: _submitForm, // 폼 제출
-                  child: Text('Add Plan'), // 버튼 텍스트
+                  child: const Text('Add Plan'), // 버튼 텍스트
                 ),
               ],
             ),

@@ -21,12 +21,14 @@ void main() async {
         ChangeNotifierProvider(
             create: (_) => checklistProvider), // 체크리스트 프로바이더를 제공
       ],
-      child: MyApp(), // MyApp 위젯을 실행
+      child: const MyApp(), // MyApp 위젯을 실행
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     // 앱의 기본 디자인과 라우팅을 설정합니다
@@ -35,7 +37,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue, // 기본 테마 색상 설정
       ),
-      home: HomeScreen(), // 첫 화면으로 HomeScreen 설정
+      home: const HomeScreen(), // 첫 화면으로 HomeScreen 설정
     );
   }
 }

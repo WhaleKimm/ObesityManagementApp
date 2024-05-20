@@ -5,13 +5,15 @@ import 'package:obesity_management_app/providers/diet_plan_provider.dart'; // �
 import 'add_diet_plan_screen.dart'; // 다이어트 계획 추가 화면 import
 
 class DietPlanScreen extends StatelessWidget {
+  const DietPlanScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final dietPlanProvider =
         Provider.of<DietPlanProvider>(context); // 다이어트 계획 프로바이더 사용
     return Scaffold(
       appBar: AppBar(
-        title: Text('다이어트 계획'), // 앱바 제목 설정
+        title: const Text('다이어트 계획'), // 앱바 제목 설정
       ),
       body: ListView.builder(
         itemCount: dietPlanProvider.plans.length, // 다이어트 계획 수
@@ -35,10 +37,10 @@ class DietPlanScreen extends StatelessWidget {
         onPressed: () {
           // 다이어트 계획 추가 화면으로 이동
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => AddDietPlanScreen(),
+            builder: (context) => const AddDietPlanScreen(),
           ));
         },
-        child: Icon(Icons.add), // 추가 버튼 아이콘
+        child: const Icon(Icons.add), // 추가 버튼 아이콘
       ),
     );
   }

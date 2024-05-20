@@ -8,6 +8,8 @@ import 'package:obesity_management_app/providers/checklist_provider.dart'; // �
 import 'package:obesity_management_app/models/daily_checklist.dart'; // 체크리스트 모델 import
 
 class AddChecklistScreen extends StatefulWidget {
+  const AddChecklistScreen({super.key});
+
   @override
   _AddChecklistScreenState createState() => _AddChecklistScreenState();
 }
@@ -15,8 +17,8 @@ class AddChecklistScreen extends StatefulWidget {
 class _AddChecklistScreenState extends State<AddChecklistScreen> {
   final _formKey = GlobalKey<FormState>(); // 폼 키 생성
   String _date = ''; // 날짜
-  List<String> _meals = []; // 식사 목록
-  List<String> _exercises = []; // 운동 목록
+  final List<String> _meals = []; // 식사 목록
+  final List<String> _exercises = []; // 운동 목록
   int _waterIntake = 0; // 물 섭취량
 
   // 추가 필드
@@ -90,10 +92,10 @@ class _AddChecklistScreenState extends State<AddChecklistScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Daily Checklist'), // 앱바 제목 설정
+        title: const Text('Add Daily Checklist'), // 앱바 제목 설정
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0), // 패딩 설정
+        padding: const EdgeInsets.all(16.0), // 패딩 설정
         child: Form(
           key: _formKey, // 폼 키 설정
           child: Column(
@@ -102,7 +104,7 @@ class _AddChecklistScreenState extends State<AddChecklistScreen> {
                 decoration: InputDecoration(
                   labelText: 'Date',
                   suffixIcon: IconButton(
-                    icon: Icon(Icons.calendar_today),
+                    icon: const Icon(Icons.calendar_today),
                     onPressed: () => _selectDate(context),
                   ),
                 ), // 날짜 입력 필드
@@ -118,36 +120,36 @@ class _AddChecklistScreenState extends State<AddChecklistScreen> {
               // 식사 입력 필드
               Row(
                 children: [
-                  Text('Breakfast: '),
+                  const Text('Breakfast: '),
                   _breakfast != null
                       ? Image.file(File(_breakfast!), width: 50, height: 50)
                       : Container(),
                   IconButton(
-                    icon: Icon(Icons.photo_camera),
+                    icon: const Icon(Icons.photo_camera),
                     onPressed: () => _pickImage('breakfast'),
                   ),
                 ],
               ),
               Row(
                 children: [
-                  Text('Lunch: '),
+                  const Text('Lunch: '),
                   _lunch != null
                       ? Image.file(File(_lunch!), width: 50, height: 50)
                       : Container(),
                   IconButton(
-                    icon: Icon(Icons.photo_camera),
+                    icon: const Icon(Icons.photo_camera),
                     onPressed: () => _pickImage('lunch'),
                   ),
                 ],
               ),
               Row(
                 children: [
-                  Text('Dinner: '),
+                  const Text('Dinner: '),
                   _dinner != null
                       ? Image.file(File(_dinner!), width: 50, height: 50)
                       : Container(),
                   IconButton(
-                    icon: Icon(Icons.photo_camera),
+                    icon: const Icon(Icons.photo_camera),
                     onPressed: () => _pickImage('dinner'),
                   ),
                 ],
@@ -157,7 +159,7 @@ class _AddChecklistScreenState extends State<AddChecklistScreen> {
                 children: [
                   Expanded(
                     child: TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           labelText: 'Exercise Hours'), // 운동 시간 (시간) 입력 필드
                       keyboardType: TextInputType.number,
                       validator: (value) {
@@ -175,7 +177,7 @@ class _AddChecklistScreenState extends State<AddChecklistScreen> {
                   ),
                   Expanded(
                     child: TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           labelText: 'Exercise Minutes'), // 운동 시간 (분) 입력 필드
                       keyboardType: TextInputType.number,
                       validator: (value) {
@@ -195,10 +197,6 @@ class _AddChecklistScreenState extends State<AddChecklistScreen> {
               ),
               // 물 섭취량 입력 필드
               ToggleButtons(
-                children: List<Widget>.generate(
-                  11,
-                  (index) => Text('${index}L'),
-                ),
                 isSelected: List<bool>.generate(
                   11,
                   (index) => index == _waterIntake,
@@ -209,10 +207,14 @@ class _AddChecklistScreenState extends State<AddChecklistScreen> {
                     _isWaterIntakeToggle = index > 0;
                   });
                 },
+                children: List<Widget>.generate(
+                  11,
+                  (index) => Text('${index}L'),
+                ),
               ),
               ElevatedButton(
                 onPressed: _submitForm, // 폼 제출
-                child: Text('Add Checklist'), // 버튼 텍스트
+                child: const Text('Add Checklist'), // 버튼 텍스트
               ),
             ],
           ),

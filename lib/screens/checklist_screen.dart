@@ -5,13 +5,15 @@ import 'package:obesity_management_app/providers/checklist_provider.dart'; // �
 import 'add_checklist_screen.dart'; // 체크리스트 추가 화면 import
 
 class ChecklistScreen extends StatelessWidget {
+  const ChecklistScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final checklistProvider =
         Provider.of<ChecklistProvider>(context); // 체크리스트 프로바이더 사용
     return Scaffold(
       appBar: AppBar(
-        title: Text('일일 체크 리스트'), // 앱바 제목 설정
+        title: const Text('일일 체크 리스트'), // 앱바 제목 설정
       ),
       body: ListView.builder(
         itemCount: checklistProvider.checklists.length, // 체크리스트 수
@@ -33,10 +35,10 @@ class ChecklistScreen extends StatelessWidget {
         onPressed: () {
           // 체크리스트 추가 화면으로 이동
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => AddChecklistScreen(),
+            builder: (context) => const AddChecklistScreen(),
           ));
         },
-        child: Icon(Icons.add), // 추가 버튼 아이콘
+        child: const Icon(Icons.add), // 추가 버튼 아이콘
       ),
     );
   }
