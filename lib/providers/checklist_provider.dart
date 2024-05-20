@@ -1,4 +1,3 @@
-// providers/checklist_provider.dart
 import 'package:flutter/material.dart';
 import 'package:obesity_management_app/models/daily_checklist.dart'; // 체크리스트 모델 import
 import 'package:shared_preferences/shared_preferences.dart'; // 로컬 저장소 import

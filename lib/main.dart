@@ -1,9 +1,9 @@
-// main.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/diet_plan_provider.dart'; // 다이어트 계획 프로바이더 import
 import 'providers/checklist_provider.dart'; // 체크리스트 프로바이더 import
-import 'screens/home_screen.dart'; // 홈 화면 import
+// import 'screens/home_screen.dart'; // 홈 화면 import
+import 'screens/sign_in_page.dart'; // SignInPage2 화면 import
 
 void main() async {
   // main 함수는 앱의 진입점입니다
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue, // 기본 테마 색상 설정
       ),
-      home: const HomeScreen(), // 첫 화면으로 HomeScreen 설정
+      home: const SignInPage2(), // 첫 화면으로 SignInPage2 설정
     );
   }
 }
